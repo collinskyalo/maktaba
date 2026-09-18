@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maktaba — Kenya's digital library</title>
+  <meta name="description" content="Search, read, and download millions of public-domain and licensed books. Built for Kenya.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <svg class="brand__mark" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M4 5.5C4 4.67 4.67 4 5.5 4H13V24H5.5C4.67 24 4 23.33 4 22.5V5.5Z" fill="currentColor"/>
+          <path d="M15 4H22.5C23.33 4 24 4.67 24 5.5V22.5C24 23.33 23.33 24 22.5 24H15V4Z" fill="currentColor" opacity="0.55"/>
+        </svg>
+        <span>Maktaba</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="books.html">Browse</a>
+        <a href="#categories">Categories</a>
+        <a href="#best-books">Best books</a>
+        <a href="#recently-added">New</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--ghost" href="login.html">Log in</a>
+        <a class="btn btn--primary" href="register.html">Sign up</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="books.html">Browse</a>
+      <a href="#categories">Categories</a>
+      <a href="#best-books">Best books</a>
+      <a href="#recently-added">New</a>
+      <hr>
+      <a href="login.html">Log in</a>
+      <a href="register.html">Sign up</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="hero__kicker">Kenya's digital library</p>
+          <h1 class="hero__title">Search millions of books, right where you are.</h1>
+          <p class="hero__subtitle">Maktaba brings public-domain classics and licensed titles together in one place — read online for free, or download eligible PDFs for KSh 5.</p>
+
+          <form class="hero__search" id="heroSearchForm" role="search">
+            <label class="sr-only" for="heroSearchInput">Search books, authors, or ISBN</label>
+            <svg class="hero__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.25" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M17 17L13.6 13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <input type="text" id="heroSearchInput" name="q" placeholder="Try &quot;Chinua Achebe&quot; or &quot;9780435905255&quot;" autocomplete="off">
+            <button type="submit" class="btn btn--primary">Search</button>
+          </form>
+
+          <ul class="hero__tags">
+            <li><a href="books.html?category=fiction">Fiction</a></li>
+            <li><a href="books.html?category=business">Business</a></li>
+            <li><a href="books.html?category=history">History</a></li>
+            <li><a href="books.html?category=self-improvement">Self improvement</a></li>
+          </ul>
+        </div>
+
+        <div class="hero__art" aria-hidden="true">
+          <svg viewBox="0 0 420 380" width="100%" height="100%">
+            <ellipse cx="210" cy="330" rx="150" ry="18" fill="#0F766E" opacity="0.08"/>
+            <g transform="translate(60,60)">
+              <rect x="0" y="150" width="120" height="18" rx="3" fill="#0F766E"/>
+              <rect x="10" y="130" width="100" height="18" rx="3" fill="#C9A227"/>
+              <rect x="2" y="110" width="116" height="18" rx="3" fill="#1A1E1D"/>
+              <g transform="translate(6,-6)">
+                <path d="M60 20 L60 108 L4 118 L4 30 Z" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+                <path d="M60 20 L60 108 L116 118 L116 30 Z" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+                <path d="M60 20 C 40 12, 20 12, 4 30 L4 118 C 20 100, 40 100, 60 108 Z" fill="#E6F2F0"/>
+                <path d="M60 20 C 80 12, 100 12, 116 30 L116 118 C 100 100, 80 100, 60 108 Z" fill="#F4EFDD"/>
+                <line x1="60" y1="22" x2="60" y2="106" stroke="#0F766E" stroke-width="2"/>
+              </g>
+            </g>
+            <circle cx="340" cy="70" r="26" fill="#C9A227" opacity="0.18"/>
+            <circle cx="60" cy="40" r="14" fill="#0F766E" opacity="0.12"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="categories-heading">Browse by category</h2>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section section--tinted" id="most-read" aria-labelledby="most-read-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="most-read-heading">Most read right now</h2>
+          <div class="carousel-controls" data-carousel-controls="mostReadTrack">
+            <button type="button" class="carousel-btn" data-dir="-1" aria-label="Scroll left">‹</button>
+            <button type="button" class="carousel-btn" data-dir="1" aria-label="Scroll right">›</button>
+          </div>
+        </div>
+        <div class="carousel" id="mostReadTrack"></div>
+      </div>
+    </section>
+
+    <section class="section" id="best-books" aria-labelledby="best-books-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="best-books-heading">Best books, curated</h2>
+          <a class="section__link" href="books.html?sort=best">See all</a>
+        </div>
+        <ol class="best-list" id="bestList"></ol>
+      </div>
+    </section>
+
+    <section class="section section--tinted" id="recently-added" aria-labelledby="recent-heading">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="recent-heading">Recently added</h2>
+          <a class="section__link" href="books.html?sort=recent">See all</a>
+        </div>
+        <div class="book-grid" id="recentGrid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="brand"><span>Maktaba</span></span>
+        <p>A digital library built for Kenya — legal, affordable access to books online.</p>
+      </div>
+      <div class="footer__col">
+        <h3>Company</h3>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h3>Legal</h3>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer__col">
+        <h3>Support</h3>
+        <a href="#">Help center</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; 2026 Maktaba. All books are sourced from public-domain or licensed providers.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

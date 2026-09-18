@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Maktaba — admin.css
+   Styles for admin.html: the admin dashboard (stat cards, tabs, tables,
+   and the add/edit book form).
+   ========================================================================== */
+
+.admin-page { padding: 32px 0 64px; }
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.admin-header h1 { font-size: 1.7rem; margin: 0; }
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+.stat-card__value {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--color-emerald-dark);
+}
+.stat-card__label {
+  font-size: 0.82rem;
+  color: var(--color-charcoal-soft);
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+.admin-tab {
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-charcoal-soft);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border-left: none; border-right: none; border-top: none;
+}
+.admin-tab.is-active { color: var(--color-emerald-dark); border-bottom-color: var(--color-emerald); }
+
+.admin-panel { display: none; }
+.admin-panel.is-active { display: block; }
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.admin-table-wrap { overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 640px; }
+.admin-table th, .admin-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--color-border); }
+.admin-table th { background: var(--color-cream); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--color-charcoal-soft); }
+.admin-table tr:last-child td { border-bottom: none; }
+
+.admin-badge { font-size: 0.72rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; }
+.admin-badge--completed { background: var(--color-emerald-tint); color: var(--color-emerald-dark); }
+.admin-badge--pending { background: var(--color-gold-tint); color: #7A611A; }
+.admin-badge--failed { background: #FBEAE9; color: var(--color-danger); }
+.admin-badge--featured { background: var(--color-gold-tint); color: #7A611A; }
+
+.admin-row-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--color-emerald-dark);
+  margin-right: 10px;
+}
+.admin-row-actions button.danger { color: var(--color-danger); }
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.admin-form-grid .field { margin-bottom: 0; }
+.admin-form-actions { display: flex; gap: 10px; }
+
+.access-denied { text-align: center; padding: 80px 20px; }

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Maktaba — payment.css
+   Styles for payment.html: the KSh 5 M-Pesa STK Push initiation page.
+   ========================================================================== */
+
+.payment-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  background: var(--color-cream);
+}
+
+.payment-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.payment-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.payment-summary .cover { width: 56px; flex-shrink: 0; }
+.payment-summary h2 { font-size: 1.05rem; margin: 0 0 2px; }
+.payment-summary p { margin: 0; font-size: 0.85rem; }
+
+.payment-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.payment-amount .label { color: var(--color-charcoal-soft); font-size: 0.9rem; }
+.payment-amount .value { font-family: var(--font-display); font-size: 1.8rem; color: var(--color-emerald-dark); }
+
+.payment-status {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-emerald-tint);
+  color: var(--color-emerald-dark);
+  font-size: 0.88rem;
+  margin-top: 18px;
+}
+.payment-status.is-visible { display: flex; }
+.payment-status--error { background: #FBEAE9; color: var(--color-danger); }

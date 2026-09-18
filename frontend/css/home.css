@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Maktaba — home.css
+   Homepage-only sections: hero, categories, most-read carousel,
+   best-books list, recently-added grid, and shared book-card styles.
+   ========================================================================== */
+
+/* Hero ---------------------------------------------------------------- */
+
+.hero {
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-white) 100%);
+  padding: 56px 0 48px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero__kicker {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-emerald);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.hero__title {
+  font-size: 2.1rem;
+  max-width: 16ch;
+  margin-bottom: 18px;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-bottom: 28px;
+}
+
+.hero__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 8px 8px 8px 18px;
+  box-shadow: var(--shadow-card);
+  max-width: 560px;
+}
+.hero__search-icon { color: var(--color-charcoal-soft); flex-shrink: 0; }
+.hero__search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: transparent;
+  min-width: 0;
+}
+.hero__search input::placeholder { color: #9A9D98; }
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.hero__tags a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-emerald-dark);
+  background: var(--color-emerald-tint);
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+.hero__tags a:hover { background: #D5EAE6; }
+
+.hero__art { display: none; }
+
+/* Category grid --------------------------------------------------------- */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.category-card:hover { border-color: var(--color-emerald); transform: translateY(-2px); }
+
+.category-card__icon {
+  width: 42px; height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--color-emerald-tint);
+  color: var(--color-emerald-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.category-card__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+}
+
+/* Shared book cover treatment (mock artwork until real covers are wired
+   in from the API in later phases) ---------------------------------------*/
+
+.cover {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.25;
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%);
+}
+.cover span { position: relative; z-index: 1; }
+
+/* Most-read carousel ------------------------------------------------------*/
+
+.carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.book-card {
+  flex: 0 0 148px;
+  scroll-snap-align: start;
+}
+.book-card .cover { margin-bottom: 10px; box-shadow: var(--shadow-card); }
+.book-card:hover .cover { box-shadow: var(--shadow-card-hover); }
+.book-card__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0 2px;
+  color: var(--color-charcoal);
+}
+.book-card__author {
+  font-size: 0.8rem;
+  color: var(--color-charcoal-soft);
+  margin: 0 0 4px;
+}
+.book-card__meta {
+  font-size: 0.75rem;
+  color: var(--color-emerald-dark);
+  font-weight: 600;
+}
+
+/* Best-books ranked list ---------------------------------------------------*/
+
+.best-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  counter-reset: rank;
+}
+
+.best-list__item {
+  display: grid;
+  grid-template-columns: 34px 56px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+.best-list__item:first-child { border-top: 1px solid var(--color-border); }
+
+.best-list__rank {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.best-list__cover { width: 56px; }
+.best-list__cover .cover { aspect-ratio: 2/3; }
+
+.best-list__info h3 {
+  font-size: 1rem;
+  margin: 0 0 2px;
+}
+.best-list__info p {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.best-list__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  white-space: nowrap;
+}
+.best-list__rating svg { color: var(--color-gold); }
+
+/* Recently-added grid ------------------------------------------------------*/
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.book-grid .cover { margin-bottom: 10px; box-shadow: var(--shadow-card); }
+.book-grid .book-card { flex: none; }

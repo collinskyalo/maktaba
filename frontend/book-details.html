@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Book details — Maktaba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/books.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span>Maktaba</span></a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="books.html">Browse</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#best-books">Best books</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--ghost" href="login.html">Log in</a>
+        <a class="btn btn--primary" href="register.html">Sign up</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="books.html">Browse</a>
+      <a href="index.html#categories">Categories</a>
+      <a href="index.html#best-books">Best books</a>
+      <hr>
+      <a href="login.html">Log in</a>
+      <a href="register.html">Sign up</a>
+    </nav>
+  </header>
+
+  <main class="detail-page">
+    <div class="container">
+      <div class="detail-layout" id="detailLayout">
+        <!-- Populated by js/bookDetails.js. Skeleton shown until the fetch resolves. -->
+        <div class="detail-cover-col">
+          <div class="cover detail-skeleton" style="background:#ECEAE3;"></div>
+        </div>
+        <div class="detail-info">
+          <div class="skeleton-line skeleton-line--wide" style="height:28px; width:60%; margin-bottom:10px;"></div>
+          <div class="skeleton-line skeleton-line--narrow" style="margin-bottom:20px;"></div>
+        </div>
+      </div>
+
+      <div class="results-empty" id="notFoundMessage" hidden>
+        This book couldn't be found. <a href="books.html">Browse all books</a> instead.
+      </div>
+    </div>
+  </main>
+
+  <!-- M-Pesa STK Push modal -->
+  <div class="modal-overlay" id="paymentModal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="paymentModalClose" aria-label="Close">&times;</button>
+      <h2>Pay with M-Pesa</h2>
+      <p>Enter the Safaricom number to receive the STK Push prompt on. You'll be charged KSh 5.</p>
+      <div class="form-message" id="paymentMessage"></div>
+      <form id="paymentForm">
+        <div class="field">
+          <label for="phoneNumber">Phone number</label>
+          <input type="tel" id="phoneNumber" placeholder="2547XXXXXXXX" required>
+        </div>
+        <button type="submit" class="btn btn--gold btn--block" id="paymentSubmitBtn">Send STK Push</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="brand"><span>Maktaba</span></span>
+        <p>A digital library built for Kenya — legal, affordable access to books online.</p>
+      </div>
+      <div class="footer__col"><h3>Company</h3><a href="#">About</a><a href="#">Contact</a></div>
+      <div class="footer__col"><h3>Legal</h3><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="footer__col"><h3>Support</h3><a href="#">Help center</a></div>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; 2026 Maktaba. All books are sourced from public-domain or licensed providers.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/bookDetails.js"></script>
+</body>
+</html>

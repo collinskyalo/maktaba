@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — Maktaba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span>Maktaba</span></a>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="auth-card__subtitle">Log in to read and download your books.</p>
+
+      <div class="form-message" id="formMessage" role="alert"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+          <p class="field-error" id="emailError"></p>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required>
+          <p class="field-error" id="passwordError"></p>
+        </div>
+        <p style="text-align:right; margin: -8px 0 18px;"><a href="forgot-password.html" style="font-size:0.85rem; color: var(--color-emerald-dark); font-weight:600;">Forgot password?</a></p>
+        <button type="submit" class="btn btn--primary btn--block" id="submitBtn">Log in</button>
+      </form>
+
+      <div class="auth-divider">or</div>
+      <button type="button" class="btn btn--google btn--block" id="googleBtn">Continue with Google</button>
+
+      <p class="auth-foot">Don't have an account? <a href="register.html">Sign up</a></p>
+    </div>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

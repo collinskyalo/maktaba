@@ -1,0 +1,57 @@
+# Maktaba — docker-compose.yml
+# Local development / small-deployment stack: PostgreSQL + the backend
+# API. The frontend is static files (see docs/Deployment.md) and isn't
+# containerized here — serve it from any static host or Nginx.
+#
+# Usage:
+#   docker compose up --build
+#   docker compose exec db psql -U maktaba -d maktaba -f /docker-entrypoint-initdb.d/01-schema.sql
+#   (schema.sql and seed.sql below are auto-run by the postgres image on
+#   first startup via /docker-entrypoint-initdb.d — no manual step needed
+#   for a fresh volume.)
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: maktaba
+      POSTGRES_PASSWORD: maktaba
+      POSTGRES_DB: maktaba
+    ports:
+      - "5432:5432"
+    volumes:
+      - maktaba_db_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U maktaba"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_URL: postgres://maktaba:maktaba@db:5432/maktaba
+      JWT_SECRET: ${JWT_SECRET:?set a real JWT_SECRET in your .env}
+      JWT_EXPIRES_IN: 7d
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8080}
+      MPESA_BASE_URL: ${MPESA_BASE_URL:-https://sandbox.safaricom.co.ke}
+      MPESA_CONSUMER_KEY: ${MPESA_CONSUMER_KEY:-}
+      MPESA_CONSUMER_SECRET: ${MPESA_CONSUMER_SECRET:-}
+      MPESA_SHORTCODE: ${MPESA_SHORTCODE:-}
+      MPESA_PASSKEY: ${MPESA_PASSKEY:-}
+      MPESA_CALLBACK_URL: ${MPESA_CALLBACK_URL:-}
+      GOOGLE_BOOKS_API_KEY: ${GOOGLE_BOOKS_API_KEY:-}
+    ports:
+      - "5000:5000"
+
+volumes:
+  maktaba_db_data:

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Maktaba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span>Maktaba</span> <span style="font-size:0.7rem; font-weight:600; color:var(--color-charcoal-soft); margin-left:6px;">Admin</span></a>
+      <div class="header-actions" style="margin-left:auto;">
+        <a class="btn btn--ghost" href="index.html">Back to site</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div class="container">
+
+      <div id="accessDenied" class="access-denied" hidden>
+        <h1>Admins only</h1>
+        <p>You need an admin account to view this page.</p>
+        <a class="btn btn--primary" href="login.html">Log in</a>
+      </div>
+
+      <div id="adminContent" hidden>
+        <div class="admin-header">
+          <h1>Admin dashboard</h1>
+        </div>
+
+        <div class="admin-stats" id="statsGrid"></div>
+
+        <div class="admin-tabs" role="tablist">
+          <button class="admin-tab is-active" data-panel="booksPanel">Books</button>
+          <button class="admin-tab" data-panel="usersPanel">Users</button>
+          <button class="admin-tab" data-panel="paymentsPanel">Payments</button>
+        </div>
+
+        <section class="admin-panel is-active" id="booksPanel">
+          <div class="admin-toolbar">
+            <p class="results-summary" id="booksCount"></p>
+            <button class="btn btn--primary" id="newBookBtn">+ Add book</button>
+          </div>
+
+          <form class="admin-form-grid" id="bookForm" hidden>
+            <input type="hidden" id="bookId">
+            <div class="field"><label for="bookTitle">Title</label><input id="bookTitle" required></div>
+            <div class="field"><label for="bookAuthor">Author</label><input id="bookAuthor" required></div>
+            <div class="field"><label for="bookCategory">Category</label><input id="bookCategory" required placeholder="fiction, history, ..."></div>
+            <div class="field"><label for="bookIsbn">ISBN</label><input id="bookIsbn"></div>
+            <div class="field"><label for="bookPublisher">Publisher</label><input id="bookPublisher"></div>
+            <div class="field"><label for="bookPages">Pages</label><input id="bookPages" type="number" min="1"></div>
+            <div class="field"><label for="bookRating">Rating</label><input id="bookRating" type="number" min="0" max="5" step="0.1"></div>
+            <div class="field"><label for="bookPdfUrl">PDF URL (fix broken links here)</label><input id="bookPdfUrl" placeholder="https://…"></div>
+            <div class="field"><label for="bookCoverUrl">Cover image URL</label><input id="bookCoverUrl" placeholder="https://…"></div>
+            <div class="field">
+              <label for="bookFeatured">Featured</label>
+              <select id="bookFeatured"><option value="false">No</option><option value="true">Yes</option></select>
+            </div>
+            <div class="field full-width">
+              <label for="bookSynopsis">Synopsis</label>
+              <input id="bookSynopsis">
+            </div>
+            <div class="admin-form-actions full-width">
+              <button type="submit" class="btn btn--primary" id="bookFormSubmit">Save book</button>
+              <button type="button" class="btn btn--ghost" id="bookFormCancel">Cancel</button>
+            </div>
+            <p class="form-message" id="bookFormMessage"></p>
+          </form>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Title</th><th>Author</th><th>Category</th><th>Rating</th><th>Featured</th><th>PDF</th><th></th></tr></thead>
+              <tbody id="booksTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-panel" id="usersPanel">
+          <p class="results-summary" id="usersCount"></p>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th></tr></thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-panel" id="paymentsPanel">
+          <p class="results-summary" id="paymentsCount"></p>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>User</th><th>Book</th><th>Amount</th><th>Status</th><th>Receipt</th><th>Date</th></tr></thead>
+              <tbody id="paymentsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

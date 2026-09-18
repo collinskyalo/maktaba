@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Maktaba — responsive.css
+   Mobile-first breakpoints. Base styles (style.css / home.css / books.css /
+   profile.css / payment.css) target small screens; this file layers on
+   adjustments for larger viewports.
+   ========================================================================== */
+
+/* Tablet: 640px and up ---------------------------------------------------- */
+@media (min-width: 640px) {
+  .category-grid { grid-template-columns: repeat(3, 1fr); }
+  .book-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero__title { font-size: 2.5rem; }
+
+  .best-list__item { grid-template-columns: 40px 64px 1fr auto; }
+}
+
+/* Small desktop / large tablet: 860px and up ------------------------------ */
+@media (min-width: 860px) {
+  .main-nav { display: flex; }
+  .header-actions { display: flex; }
+  .nav-toggle { display: none; }
+  .mobile-nav { display: none !important; }
+
+  .hero__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .hero__art { display: block; }
+  .hero__title { font-size: 2.9rem; }
+
+  .carousel-controls { display: flex; }
+
+  .category-grid { grid-template-columns: repeat(5, 1fr); }
+  .book-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Desktop: 1100px and up --------------------------------------------------- */
+@media (min-width: 1100px) {
+  .hero__title { font-size: 3.2rem; }
+  .book-card { flex-basis: 168px; }
+}
+
+/* books.html result grids ------------------------------------------------ */
+@media (min-width: 640px) {
+  .results-grid { grid-template-columns: repeat(3, 1fr); }
+  .external-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 860px) {
+  .results-toolbar { flex-direction: row; align-items: center; justify-content: space-between; }
+  .results-searchbar { max-width: 380px; }
+  .results-grid { grid-template-columns: repeat(4, 1fr); }
+  .external-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* book-details.html ------------------------------------------------------- */
+@media (min-width: 860px) {
+  .detail-layout { grid-template-columns: 280px 1fr; align-items: start; }
+  .detail-cover-col .cover, .detail-actions { margin: 0; }
+}
+
+/* admin.html --------------------------------------------------------------*/
+@media (min-width: 640px) {
+  .admin-stats { grid-template-columns: repeat(4, 1fr); }
+  .admin-form-grid { grid-template-columns: repeat(2, 1fr); }
+  .admin-form-grid .full-width { grid-column: 1 / -1; }
+}
