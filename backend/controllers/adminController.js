@@ -11,6 +11,7 @@ const Download = require('../models/Download');
 const pool = require('../config/db');
 const { ok, fail } = require('../utils/response');
 
+
 function validateBookBody(body) {
   const errors = [];
   if (!body.title || !body.title.trim()) errors.push('Title is required.');
