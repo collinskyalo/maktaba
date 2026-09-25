@@ -3,7 +3,7 @@
  * Express application entry point: security middleware, route mounting,
  * and centralized error handling.
  */
-
+const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -55,6 +55,14 @@ app.use('/api/users', usersRoutes);
 app.use('/api/payments', paymentsRoutes);
 app.use('/api', trendingRoutes); // /api/trending, /api/best-books
 app.use('/api/admin', adminRoutes);
+
+// Serve frontend files
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
 
 // --- 404 + error handling -------------------------------------------------
 app.use(notFoundHandler);
