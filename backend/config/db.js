@@ -15,6 +15,9 @@ const env = require('./env');
 
 const pool = new Pool({
   connectionString: env.databaseUrl || undefined,
+  ssl: process.env.NODE_ENV === 'production'
+    ? { rejectUnauthorized: false }
+    : false,
 });
 
 pool.on('error', (err) => {
