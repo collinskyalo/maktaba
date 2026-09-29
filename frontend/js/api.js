@@ -152,11 +152,6 @@ export function fetchBookById(id) {
   return request(`/books/${id}`);
 }
 
-/** POST /api/payments/stkpush — requires auth. amount is fixed server-side at KSh 5. */
-export function initiateStkPush({ phoneNumber, bookId }) {
-  return request('/payments/stkpush', { method: 'POST', body: { phoneNumber, bookId }, auth: true });
-}
-
 /** GET /api/trending — homepage "Most read right now" carousel. */
 export function fetchTrending(limit = 10) {
   return request(`/trending${toQueryString({ limit })}`);
