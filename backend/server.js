@@ -25,7 +25,20 @@ const adminRoutes = require('./routes/admin.routes');
 const app = express();
 
 // --- Security & parsing middleware ---------------------------------------
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://covers.openlibrary.org",
+          "https://archive.org",
+        ],
+      },
+    },
+  })
+);
 // env.corsOrigins is undefined in development (allows any origin, which is
 // what cors() with no options does) and a fixed allow-list in production —
 // see FRONTEND_URL in .env.example. Never left wide open in production.
