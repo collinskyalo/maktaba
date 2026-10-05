@@ -137,8 +137,9 @@ function openPaymentModal(book) {
 
 /** Polls a real (non-mocked) payment until Safaricom's callback marks it done, then downloads. */
 async function pollPaymentStatus(paymentId, book, message, attempt = 0) {
-  if (attempt >= 10) {
-    message.textContent = 'Still waiting on M-Pesa — check back in a moment.';
+  if (attempt >= 20) {
+    message.textContent =
+      'Still waiting on M-Pesa — check back in a moment. Your payment will be updated automatically when Safaricom confirms it.';
     return;
   }
   await new Promise((resolve) => setTimeout(resolve, 3000));

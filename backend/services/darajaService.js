@@ -138,7 +138,19 @@ async function handleCallback(payload) {
     throw new Error('Unrecognized Daraja callback payload shape.');
   }
 
-  const { CheckoutRequestID, ResultCode, CallbackMetadata } = stkCallback;
+  const {
+    CheckoutRequestID,
+    ResultCode,
+    ResultDesc,
+    CallbackMetadata
+  } = stkCallback;
+
+  logger.info('Daraja STK callback received:', {
+    checkoutRequestId: CheckoutRequestID,
+    resultCode: ResultCode,
+    resultDesc: ResultDesc,
+  });
+
   const payment = await Payment.findByCheckoutRequestId(CheckoutRequestID);
   if (!payment) {
     logger.warn(`Daraja callback for unknown CheckoutRequestID ${CheckoutRequestID}`);
@@ -153,8 +165,21 @@ async function handleCallback(payload) {
     if (payment.book_id) {
       await Download.create({ userId: payment.user_id, bookId: payment.book_id, paymentId: payment.id });
     }
+
+    logger.info('M-Pesa payment completed and download unlocked:', {
+      paymentId: payment.id,
+      bookId: payment.book_id,
+      receipt,
+    });
   } else {
     await Payment.updateStatus(payment.id, 'failed');
+
+    logger.warn('M-Pesa payment failed:', {
+      paymentId: payment.id,
+      bookId: payment.book_id,
+      resultCode: ResultCode,
+      resultDesc: ResultDesc,
+    });
   }
 
   return { handled: true };
